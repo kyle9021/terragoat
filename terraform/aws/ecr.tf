@@ -14,6 +14,9 @@ resource aws_ecr_repository "repository" {
     git_repo             = "terragoat"
     yor_trace            = "7a3ec657-fa54-4aa2-8467-5d08d6c90bc2"
   })
+  image_scanning_configuration {
+    scan_on_push = true
+  }
 }
 
 locals {

@@ -86,6 +86,13 @@ resource "aws_s3_bucket" "operations" {
     yor_trace            = "29efcf7b-22a8-4bd6-8e14-1f55b3a2d743"
   })
 
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
+      }
+    }
+  }
 }
 
 resource "aws_s3_bucket" "data_science" {

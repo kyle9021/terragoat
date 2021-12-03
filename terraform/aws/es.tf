@@ -24,6 +24,9 @@ resource "aws_elasticsearch_domain" "monitoring-framework" {
     git_repo             = "terragoat"
     yor_trace            = "95131dec-d7c9-49bb-9aff-eb0e2736603b"
   }
+  encrypt_at_rest {
+    enabled = true
+  }
 }
 
 data aws_iam_policy_document "policy" {
