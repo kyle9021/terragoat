@@ -14,7 +14,6 @@ resource azurerm_linux_virtual_machine "linux_machine" {
   network_interface_ids           = [azurerm_network_interface.ni_linux.id]
   resource_group_name             = azurerm_resource_group.example.name
   size                            = "Standard_F2"
-  disable_password_authentication = false
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
@@ -39,6 +38,7 @@ resource azurerm_linux_virtual_machine "linux_machine" {
     git_repo             = "terragoat"
     yor_trace            = "736ef713-51b8-4178-ad69-406be81f6ef2"
   })
+  allow_extension_operations = false
 }
 
 resource azurerm_windows_virtual_machine "windows_machine" {
@@ -74,4 +74,6 @@ resource azurerm_windows_virtual_machine "windows_machine" {
     git_repo             = "terragoat"
     yor_trace            = "41938587-bdfc-4234-b941-560f1ae7d6c0"
   })
+  encryption_at_host_enabled = true
+  allow_extension_operations = false
 }
