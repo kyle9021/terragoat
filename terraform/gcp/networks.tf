@@ -14,6 +14,7 @@ resource "google_compute_subnetwork" "public-subnetwork" {
     range_name    = "tf-test-secondary-range-update1"
     ip_cidr_range = "192.168.10.0/24"
   }
+  private_ip_google_access = true
 }
 
 resource "google_compute_firewall" "allow_all" {
