@@ -29,6 +29,9 @@ EOF
     git_repo             = "terragoat"
     yor_trace            = "347af3cd-4f70-4632-aca3-4d5e30ffc0b6"
   })
+  *_block_device {
+    encrypted = true
+  }
 }
 
 resource "aws_ebs_volume" "web_host_storage" {
@@ -285,6 +288,16 @@ resource "aws_s3_bucket" "flowbucket" {
     git_repo             = "terragoat"
     yor_trace            = "f058838a-b1e0-4383-b965-7e06e987ffb1"
   })
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
+      }
+    }
+  }
+  versioning {
+    enabled = true
+  }
 }
 
 output "ec2_public_dns" {
